@@ -223,7 +223,7 @@ if __name__ == '__main__':
     dataAug = DataAugmentForObjectDetection()
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--source_img_json_path', type=str, default='output_data')
+    parser.add_argument('--source_img_json_path', type=str, default='original_data')
     parser.add_argument('--save_img_json_path', type=str, default='Extend_data')
     args = parser.parse_args()
     source_img_json_path = args.source_img_json_path
@@ -252,6 +252,7 @@ if __name__ == '__main__':
                     auged_img, json_info = dataAug.dataAugment(deepcopy(img), deepcopy(json_dic))
                 
                     img_name = '{}_{}{}'.format(_file_prefix, cnt + 1, _file_suffix)  
+                    
                     img_save_path = os.path.join(save_img_json_path, img_name)
                     toolhelper.save_img(img_save_path, auged_img)  
 
